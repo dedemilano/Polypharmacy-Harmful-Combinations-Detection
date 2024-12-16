@@ -15,7 +15,7 @@ Polypharmacy refers to the use of multiple medications by a patient, which can l
 
 ## Code Structure
 
-- `draft.py`: Main script containing data loading, model training, and evaluation.
+- `main.py`: Main script containing data loading, model training, and evaluation.
   - **Data Loading**: Reads and preprocesses the dataset.
   - **Model Definition**: Defines the neural network architecture.
   - **Training Loop**: Implements the training loop with loss calculation and backpropagation.

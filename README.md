@@ -4,7 +4,7 @@ This project aims to predict the risk of hospitalization due to harmful drug com
 
 ## Project Overview
 
-Polypharmacy refers to the use of multiple medications by a patient, which can lead to harmful drug interactions and adverse effects. This project uses a neural network to predict the risk of hospitalization based on a patient's medication data.
+Polypharmacy refers to the use of multiple medications by a patient, which can lead to harmful drug interactions and adverse effects. This project uses a neural network to predict the risk of hospitalization due to these harmful combinations.
 
 ## Features
 
@@ -16,6 +16,11 @@ Polypharmacy refers to the use of multiple medications by a patient, which can l
 ## Code Structure
 
 - `draft.py`: Main script containing data loading, model training, and evaluation.
+  - **Data Loading**: Reads and preprocesses the dataset.
+  - **Model Definition**: Defines the neural network architecture.
+  - **Training Loop**: Implements the training loop with loss calculation and backpropagation.
+  - **Evaluation**: Evaluates the model using cross-validation.
+  - **Logging**: Logs experiment metrics using MLflow.
 - `PolypharmacyData.csv`: Example dataset (not included in the repository).
 
 ## How to Run

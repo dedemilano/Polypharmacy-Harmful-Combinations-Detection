@@ -11,6 +11,9 @@ from sklearn.model_selection import train_test_split, KFold
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, classification_report
 
+import hydra
+from omegaconf import DictConfig
+
 # Configuration
 class Config:
     RANDOM_SEED = 42
@@ -105,7 +108,18 @@ def evaluate_model(model, test_loader, criterion, device):
     
     return total_loss / len(test_loader), all_preds, all_labels
 
-def main():
+@hydra.main(config_path="conf", config_name="config")
+def main(cfg: DictConfig):
+
+    config = Config()
+    config.RANDOM_SEED = cfg.random_seed
+    config.TEST_SIZE = cfg.test_size
+    config.BATCH_SIZE = cfg.batch_size
+    config.LEARNING_RATE = cfg.learning_rate
+    config.EPOCHS = cfg.epochs
+    config.K_FOLDS = cfg.k_folds
+
+    
     # MLflow tracking
     mlflow.set_experiment("Polypharmacy_Hospitalization_Prediction")
     

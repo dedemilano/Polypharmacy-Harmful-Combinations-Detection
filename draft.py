@@ -111,15 +111,15 @@ def evaluate_model(model, test_loader, criterion, device):
 @hydra.main(config_path="conf", config_name="config")
 def main(cfg: DictConfig):
 
-    config = Config()
-    config.RANDOM_SEED = cfg.random_seed
-    config.TEST_SIZE = cfg.test_size
-    config.BATCH_SIZE = cfg.batch_size
-    config.LEARNING_RATE = cfg.learning_rate
-    config.EPOCHS = cfg.epochs
-    config.K_FOLDS = cfg.k_folds
+    # Example usage of the configuration
+    random_seed = cfg.random_seed
+    test_size = cfg.test_size
+    batch_size = cfg.batch_size
+    learning_rate = cfg.learning_rate
+    epochs = cfg.epochs
+    k_folds = cfg.k_folds
 
-    
+
     # MLflow tracking
     mlflow.set_experiment("Polypharmacy_Hospitalization_Prediction")
     
@@ -131,7 +131,7 @@ def main(cfg: DictConfig):
     X_scaled = scaler.fit_transform(X)
     
     # Cross-validation setup
-    kf = KFold(n_splits=Config.K_FOLDS, shuffle=True, random_state=Config.RANDOM_SEED)
+    kf = KFold(n_splits=k_folds, shuffle=True, random_state=random_seed)
     
     # Device configuration
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -151,18 +151,18 @@ def main(cfg: DictConfig):
             train_dataset = PolypharmacyDataset(X_train, y_train)
             val_dataset = PolypharmacyDataset(X_val, y_val)
             
-            train_loader = DataLoader(train_dataset, batch_size=Config.BATCH_SIZE, shuffle=True)
-            val_loader = DataLoader(val_dataset, batch_size=Config.BATCH_SIZE)
+            train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+            val_loader = DataLoader(val_dataset, batch_size=batch_size)
             
             # Initialize model
             model = NeuralNetwork(input_size=X_train.shape[1]).to(device)
             
             # Loss and optimizer
             criterion = nn.BCELoss()
-            optimizer = optim.Adam(model.parameters(), lr=Config.LEARNING_RATE)
+            optimizer = optim.Adam(model.parameters(), lr=learning_rate)
             
             # Training loop
-            for epoch in range(Config.EPOCHS):
+            for epoch in range(epochs):
                 train_loss = train_model(model, train_loader, criterion, optimizer, device)
                 val_loss, val_preds, val_labels = evaluate_model(model, val_loader, criterion, device)
                 

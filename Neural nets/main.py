@@ -108,6 +108,8 @@ def evaluate_model(model, test_loader, criterion, device):
     
     return total_loss / len(test_loader), all_preds, all_labels
 
+
+
 @hydra.main(config_path="conf", config_name="config")
 def main(cfg: DictConfig):
 

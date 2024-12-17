@@ -21,11 +21,22 @@ Polypharmacy refers to the use of multiple medications by a patient, which can l
 
 ## Code Structure
 
-- `main.py`: Main script containing data loading, model training, and evaluation.
+- `main_nn.py`: Main script for the neural network model.
   - **Data Loading**: Reads and preprocesses the dataset.
   - **Model Definition**: Defines the neural network architecture.
   - **Training Loop**: Implements the training loop with loss calculation and backpropagation.
   - **Evaluation**: Evaluates the model using cross-validation.
+  - **Logging**: Logs experiment metrics using MLflow.
+- `main_rf.py`: Main script for the random forest model.
+  - **Data Loading**: Reads and preprocesses the dataset.
+  - **Model Definition**: Defines the random forest classifier.
+  - **Training and Evaluation**: Trains the model and evaluates its performance using cross-validation.
+  - **Feature Importance**: Analyzes feature importance.
+  - **Logging**: Logs experiment metrics using MLflow.
+- `main_ar.py`: Main script for association rule mining.
+  - **Data Loading**: Reads and preprocesses the dataset.
+  - **Association Rule Mining**: Applies association rule mining to identify frequent drug combinations.
+  - **Evaluation**: Evaluates the rules based on support, confidence, and lift.
   - **Logging**: Logs experiment metrics using MLflow.
 - `PolypharmacyData.csv`: Example dataset (not included in the repository).
 
@@ -53,14 +64,16 @@ Polypharmacy refers to the use of multiple medications by a patient, which can l
 ## How to Run
 
 1. Ensure you have the dataset `PolypharmacyData.csv` in the project directory.
-2. Run the main script:
+2. Run the main script for the desired machine learning technique:
    ```sh
-   python main.py
+   python main_nn.py  # For neural network
+   python main_rf.py  # For random forest
+   python main_ar.py  # For association rules
    ```
 
 ## Usage
 
-- Modify the `main.py` script to load your own dataset and adjust model parameters as needed.
+- Modify the respective `main.py` script to load your own dataset and adjust model parameters as needed.
 - Use MLflow to track and visualize your experiments.
 
 ## Contributing

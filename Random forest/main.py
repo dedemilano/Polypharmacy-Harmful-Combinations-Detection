@@ -141,8 +141,8 @@ class PolypharmacyRandomForest:
 # Kubeflow Pipeline Definition
 @dsl.component
 def polypharmacy_pipeline(
-    input_path: InputPath('csv'),
-    output_path: OutputPath('model')
+    input_path: InputPath,
+    output_path: OutputPath
 ):
     """
     Kubeflow pipeline for end-to-end ML workflow

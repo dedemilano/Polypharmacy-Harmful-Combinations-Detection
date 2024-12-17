@@ -1,0 +1,4 @@
+# Configuration for association rules analysis
+min_support: 0.03  # Minimum support threshold
+max_itemset_length: 14  # Maximum number of drugs in a combination
+min_batch_occurrence: 0.5  # Minimum occurrence across batches

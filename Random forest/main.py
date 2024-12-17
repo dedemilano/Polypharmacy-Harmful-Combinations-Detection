@@ -27,7 +27,7 @@ from sklearn.metrics import (
 from sklearn.preprocessing import StandardScaler
 from sklearn.inspection import permutation_importance
 
-class PolypharmacyMLOps:
+class PolypharmacyRandomForest:
     def __init__(self, config):
         """
         Initialize MLOps framework for Polypharmacy Analysis
@@ -164,7 +164,7 @@ def main(cfg: DictConfig):
     X, y = load_polypharmacy_data()
     
     # Initialize MLOps framework
-    mlops = PolypharmacyMLOps(cfg)
+    mlops = PolypharmacyRandomForest(cfg)
     
     # Train and evaluate model
     model, metrics = mlops.train_and_evaluate(X, y)
@@ -186,19 +186,3 @@ def load_polypharmacy_data():
 if __name__ == "__main__":
     main()
 
-# Configuration files (to be created in conf/config.yaml)
-"""
-# Sample Hydra Configuration (conf/config.yaml)
-mlflow:
-  experiment_name: polypharmacy_analysis
-  tracking_uri: file://./mlruns
-
-training:
-  test_size: 0.3
-  random_seed: 42
-
-model:
-  n_estimators: 100
-  max_depth: None
-  min_samples_split: 2
-"""

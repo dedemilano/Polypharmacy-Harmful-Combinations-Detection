@@ -13,6 +13,12 @@ Polypharmacy refers to the use of multiple medications by a patient, which can l
 - **Cross-Validation**: Implements K-Fold cross-validation to evaluate model performance.
 - **MLflow Integration**: Tracks experiments and logs metrics with MLflow.
 
+## Machine Learning Techniques
+
+- **Neural Networks**: Utilizes a deep learning model to predict the risk of hospitalization.
+- **Random Forest**: Uses a random forest classifier to evaluate feature importance and model performance.
+- **Association Rules**: Applies association rule mining to identify frequent drug combinations and their potential risks.
+
 ## Code Structure
 
 - `main.py`: Main script containing data loading, model training, and evaluation.
@@ -23,9 +29,44 @@ Polypharmacy refers to the use of multiple medications by a patient, which can l
   - **Logging**: Logs experiment metrics using MLflow.
 - `PolypharmacyData.csv`: Example dataset (not included in the repository).
 
-## How to Run
+## Prerequisites
+
+- Python 3.7 or higher
+- PyTorch
+- MLflow
+- Pandas
+- Scikit-learn
+
+## Installation
 
 1. Clone the repository:
    ```sh
    git clone https://github.com/dedemilano/Polypharmacy-Harmful-Combinations-Detection.git
    cd Polypharmacy-Harmful-Combinations-Detection
+   ```
+
+2. Install the required packages:
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+## How to Run
+
+1. Ensure you have the dataset `PolypharmacyData.csv` in the project directory.
+2. Run the main script:
+   ```sh
+   python main.py
+   ```
+
+## Usage
+
+- Modify the `main.py` script to load your own dataset and adjust model parameters as needed.
+- Use MLflow to track and visualize your experiments.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License.
